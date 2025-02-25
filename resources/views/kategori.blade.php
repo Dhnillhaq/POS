@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Data Level Pengguna</title>
+    <title>Data Kategori</title>
 </head>
 <body>
     <h1>Data Level Pengguna</h1>
