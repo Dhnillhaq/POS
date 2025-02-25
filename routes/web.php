@@ -5,6 +5,7 @@ use App\Http\Controllers\BeautyHealthController;
 use App\Http\Controllers\FoodBeverageController;
 use App\Http\Controllers\HomeCareController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
@@ -27,6 +28,7 @@ Route::get('/', function () {
 });
 
 Route::get('/level', [LevelController::class, 'index']);
+Route::get('/kategori', [KategoriController::class, 'index']);
 
 Route::prefix('category')->group(function () {
     Route::get('/food-beverage', [FoodBeverageController::class, 'index']);
