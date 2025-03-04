@@ -8,17 +8,17 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index(){
-        
-        $user = UserModel::findOr(1, ['username', 'nama'], function(){
-            abort(404);
-        });
+    public function index()
+    {
+
+        $user = UserModel::where('level_id',2)->count();
+        // dd($user);
         return view('user', ['data' => $user]);
-        
     }
-    public function profil($id, $name){
+    public function profil($id, $name)
+    {
         return view('user.profil')
-        ->with('id' , $id)
-        ->with('name' , $name);
+            ->with('id', $id)
+            ->with('name', $name);
     }
 }
