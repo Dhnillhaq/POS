@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeCareController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
@@ -38,33 +39,38 @@ Route::group(['prefix' => 'user'], function () {
 });
 
 Route::group(['prefix' => 'level'], function () {
-    Route::get('/', [LevelController::class, 'index']); // menampilkan halaman awal user
-    Route::post('/list', [LevelController::class, 'list']); // menampilkan data user dalam bentuk json untuk datatables
-    Route::get('/create', [LevelController::class, 'create']); // menampilkan halaman form tambah user
-    Route::post('/', [LevelController::class, 'store']); // menyimpan data user baru
-    Route::get('/{id}', [LevelController::class, 'show']); // menampilkan detail user
-    Route::get('/{id}/edit', [LevelController::class, 'edit']); // menampilkan halaman form edit user
-    Route::put('/{id}', [LevelController::class, 'update']); // menyimpan perubahan data user
-    Route::delete('/{id}', [LevelController::class, 'destroy']); // menghapus data user
+    Route::get('/', [LevelController::class, 'index']); 
+    Route::post('/list', [LevelController::class, 'list']);
+    Route::get('/create', [LevelController::class, 'create']);
+    Route::post('/', [LevelController::class, 'store']); 
+    Route::get('/{id}', [LevelController::class, 'show']); 
+    Route::get('/{id}/edit', [LevelController::class, 'edit']); 
+    Route::put('/{id}', [LevelController::class, 'update']); 
+    Route::delete('/{id}', [LevelController::class, 'destroy']); 
 });
 
-// Route::get('/level', [WelcomeController::class, 'index']);
-// Route::get('/level', [LevelController::class, 'index']);
-// Route::get('/kategori', [KategoriController::class, 'index']);
-// Route::get('/user', [UserController::class, 'index']);
-// Route::get('/user/tambah', [UserController::class, 'tambah']);
-// Route::get('/user/tambah_simpan', [UserController::class, 'tambah_simpan']);
-// Route::get('/user/ubah/{id}', [UserController::class, 'ubah']);
-// Route::get('/user/ubah_simpan/{id}', [UserController::class, 'ubah_simpan']);
-// Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
+Route::group(['prefix' => 'kategori'], function () {
+    Route::get('/', [KategoriController::class, 'index']); 
+    Route::post('/list', [KategoriController::class, 'list']); 
+    Route::get('/create', [KategoriController::class, 'create']); 
+    Route::post('/', [KategoriController::class, 'store']); 
+    Route::get('/{id}', [KategoriController::class, 'show']); 
+    Route::get('/{id}/edit', [KategoriController::class, 'edit']);
+    Route::put('/{id}', [KategoriController::class, 'update']);
+    Route::delete('/{id}', [KategoriController::class, 'destroy']);
+});
 
+Route::group(['prefix' => 'supplier'], function () {
+    Route::get('/', [SupplierController::class, 'index']); 
+    Route::post('/list', [SupplierController::class, 'list']); 
+    Route::get('/create', [SupplierController::class, 'create']); 
+    Route::post('/', [SupplierController::class, 'store']); 
+    Route::get('/{id}', [SupplierController::class, 'show']); 
+    Route::get('/{id}/edit', [SupplierController::class, 'edit']);
+    Route::put('/{id}', [SupplierController::class, 'update']);
+    Route::delete('/{id}', [SupplierController::class, 'destroy']);
+});
 
-// Route::prefix('category')->group(function () {
-//     Route::get('/food-beverage', [FoodBeverageController::class, 'index']);
-//     Route::get('/beauty-health', [BeautyHealthController::class, 'index']);
-//     Route::get('/home-care', [HomeCareController::class, 'index']);
-//     Route::get('/baby-kid', [BabyKidController::class, 'index']);
-// });
 
 // Route::get('/user/{id}/name/{name}', [UserController::class, 'profil']);
 
