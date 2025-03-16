@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BabyKidController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BeautyHealthController;
 use App\Http\Controllers\FoodBeverageController;
 use App\Http\Controllers\HomeCareController;
@@ -32,6 +33,8 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('/list', [UserController::class, 'list']); // menampilkan data user dalam bentuk json untuk datatables
     Route::get('/create', [UserController::class, 'create']); // menampilkan halaman form tambah user
     Route::post('/', [UserController::class, 'store']); // menyimpan data user baru
+    Route::get('/create_ajax', [UserController::class, 'create_ajax']); // Menampilkan halaman form tambah user ajax
+    Route::post('/ajax', [UserController::class, 'store_ajax']); // menyimpan data user baru ajax
     Route::get('/{id}', [UserController::class, 'show']); // menampilkan detail user
     Route::get('/{id}/edit', [UserController::class, 'edit']); // menampilkan halaman form edit user
     Route::put('/{id}', [UserController::class, 'update']); // menyimpan perubahan data user
@@ -69,6 +72,17 @@ Route::group(['prefix' => 'supplier'], function () {
     Route::get('/{id}/edit', [SupplierController::class, 'edit']);
     Route::put('/{id}', [SupplierController::class, 'update']);
     Route::delete('/{id}', [SupplierController::class, 'destroy']);
+});
+
+Route::group(['prefix' => 'barang'], function () {
+    Route::get('/', [BarangController::class, 'index']); 
+    Route::post('/list', [BarangController::class, 'list']); 
+    Route::get('/create', [BarangController::class, 'create']); 
+    Route::post('/', [BarangController::class, 'store']); 
+    Route::get('/{id}', [BarangController::class, 'show']); 
+    Route::get('/{id}/edit', [BarangController::class, 'edit']);
+    Route::put('/{id}', [BarangController::class, 'update']);
+    Route::delete('/{id}', [BarangController::class, 'destroy']);
 });
 
 
