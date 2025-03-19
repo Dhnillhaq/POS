@@ -226,10 +226,10 @@ class UserController extends Controller
         }
         return redirect('/');
     }
-    public function show_ajax()
+    public function show_ajax($id)
     {
-        $user = UserModel::with('level')->find($id);
-        return view('user.create_ajax')->with('level', $level);
+        $user = UserModel::find($id);
+        return view('user.show_ajax', ['user' => $user]);
     }
 
     public function create_ajax()

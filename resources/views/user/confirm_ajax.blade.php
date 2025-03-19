@@ -56,7 +56,6 @@
     <script>
         $(document).ready(function () {
             $("#form-delete").validate({
-                rules: {},
                 submitHandler: function (form) {
                     $.ajax({
                         url: form.action,
@@ -72,17 +71,21 @@
                                 });
                                 dataUser.ajax.reload();
                             } else {
-                                $('.error-text').text('');
-                                $.each(response.msgField, function (prefix, val) {
-                                    $('#error-' + prefix).text(val[0]);
-                                });
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Terjadi Kesalahan',
                                     text: response.message
                                 });
                             }
-                        }
+                        },
+                        error: function (xhr, status, error) {
+                             Swal.fire({
+                                 icon: 'error',
+                                 title: 'Terjadi Kesalahan',
+                                 text: error
+                             });
+                             console.error("AJAX Error:", status, error);
+                         }
                     });
                     return false;
                 },
