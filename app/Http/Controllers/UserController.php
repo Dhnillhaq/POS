@@ -162,6 +162,25 @@ class UserController extends Controller
     }
 
     // Menampilkan halaman form edit user ajax
+    
+    
+    // Menghapus data user
+    public function destroy(string $id)
+    {
+        $check = UserModel::find($id); // untuk mengecek apakah data user dengan id yang dimaksud ada atau tidak
+        if (!$check) {
+            return redirect('/user')->with('error', 'Data user tidak ditemukan');
+        }
+        
+        try {
+            UserModel::destroy($id); // Hapus data user
+            return redirect('/user')->with('success', 'Data user berhasil dihapus');
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Jika terjadi error ketika menghapus data, redirect kembali ke halaman dengan membawa pesan error
+            return redirect('/user')->with('error', 'Data user gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
+        }
+    }
+    
     public function edit_ajax(string $id)
     {
         $user = UserModel::find($id);
@@ -207,23 +226,10 @@ class UserController extends Controller
         }
         return redirect('/');
     }
-
-
-    // Menghapus data user
-    public function destroy(string $id)
+    public function show_ajax()
     {
-        $check = UserModel::find($id); // untuk mengecek apakah data user dengan id yang dimaksud ada atau tidak
-        if (!$check) {
-            return redirect('/user')->with('error', 'Data user tidak ditemukan');
-        }
-
-        try {
-            UserModel::destroy($id); // Hapus data user
-            return redirect('/user')->with('success', 'Data user berhasil dihapus');
-        } catch (\Illuminate\Database\QueryException $e) {
-            // Jika terjadi error ketika menghapus data, redirect kembali ke halaman dengan membawa pesan error
-            return redirect('/user')->with('error', 'Data user gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
-        }
+        $user = UserModel::with('level')->find($id);
+        return view('user.create_ajax')->with('level', $level);
     }
 
     public function create_ajax()

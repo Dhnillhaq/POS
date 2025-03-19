@@ -37,8 +37,7 @@
                         <th>ID</th>
                         <th>Username</th>
                         <th>Nama</th>
-                        <th>Level
-                            Pengguna</th>
+                        <th>Level Pengguna</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
