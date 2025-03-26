@@ -62,6 +62,12 @@
                         <!-- /.col -->
                     </div>
                 </form>
+                <div class="text-center mt-3 d-flex justify-content-center align-items-center">
+                    <p class="mb-0 mr-2">Don't have an account?</p>
+                    <a href="{{ url('/register') }}" class="btn btn-link text-primary">
+                      <i class="fas fa-user-plus"></i> Register
+                    </a>
+                  </div>
             </div>
             <!-- /.card-body -->
         </div>
