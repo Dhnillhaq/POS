@@ -49,7 +49,7 @@
                                 title: 'Berhasil',
                                 text: response.message
                             });
-                            tableKategori.ajax.reload(); // reload datatable
+                            dataKategori.ajax.reload(); // reload datatable
                         } else { // jika error
                             $('.error-text').text('');
                             $.each(response.msgField, function (prefix, val) {
