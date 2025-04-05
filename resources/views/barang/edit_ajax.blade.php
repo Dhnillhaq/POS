@@ -30,10 +30,10 @@
                         <label>Kategori kategori</label>
                         <select name="kategori_id" id="kategori_id" class="form-control" required>
                             <option value="">- Pilih Kategori -</option>
-                            @foreach($kategori as $b)
-                                <option {{ ($b->kategori_id == $barang->kategori_id) ? 'selected' : '' }}
-                                    value="{{ $b->kategori_id }}">
-                                    {{ $b->kategori_nama }}
+                            @foreach($kategori as $k)
+                                <option {{ ($k->kategori_id == $barang->kategori_id) ? 'selected' : '' }}
+                                    value="{{ $k->kategori_id }}">
+                                    {{ $k->kategori_nama }}
                                 </option>
                             @endforeach
                         </select>
