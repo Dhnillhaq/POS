@@ -99,7 +99,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($User as $u)
+                @foreach($user as $u)
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td>{{ $u->username }}</td>
