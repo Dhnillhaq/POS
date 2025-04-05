@@ -300,6 +300,11 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    public function import()
+    {
+        return view('user.import');
+    }
+
     public function import_ajax(Request $request)
     {
         if ($request->ajax() || $request->wantsJson()) {

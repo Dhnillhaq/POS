@@ -281,6 +281,11 @@ class SupplierController extends Controller
         }
         return redirect('/');
     }
+    
+    public function import()
+    {
+        return view('supplier.import');
+    }
 
     public function import_ajax(Request $request)
     {

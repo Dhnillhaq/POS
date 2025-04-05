@@ -277,6 +277,11 @@ class LevelController extends Controller
         return redirect('/');
     }
 
+    public function import()
+    {
+        return view('level.import');
+    }
+
     public function import_ajax(Request $request)
     {
         if ($request->ajax() || $request->wantsJson()) {
@@ -359,7 +364,7 @@ class LevelController extends Controller
         $sheet->setTitle('Data Level'); // set title sheet
 
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
-        $filename = 'Data level_' . date('Y-m-d H:i:s') . '.xlsx';
+        $filename = 'Data Level_' . date('Y-m-d H:i:s') . '.xlsx';
 
         header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         header('Content-Disposition: attachment;filename="' . $filename . '"');

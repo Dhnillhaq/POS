@@ -222,6 +222,11 @@ class KategoriController extends Controller
         return redirect('/');
     }
 
+    public function import()
+    {
+        return view('kategori.import');
+    }
+
     public function import_ajax(Request $request)
     {
         if ($request->ajax() || $request->wantsJson()) {
