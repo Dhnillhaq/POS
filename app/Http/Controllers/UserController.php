@@ -6,6 +6,8 @@ use App\Models\LevelModel;
 use App\Models\UserModel;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -425,10 +427,60 @@ class UserController extends Controller
             return $pdf->stream('Data User' . date('Y-m-d H:i:s') . '.pdf');
     }
 
-    public function profil($id, $name)
+    public function profil()
     {
-        return view('user.profil')
-            ->with('id', $id)
-            ->with('name', $name);
+
+        $breadcrumb = (object) [
+            'title' => 'Profil User',
+            'list' => ['Home', 'Profil']
+        ];
+
+        $page = (object) [
+            'title' => 'Profil user yang terdaftar dalam sistem'
+        ];
+
+        $activeMenu = 'profil'; // set menu yang sedang aktif
+        return view('auth.profil', [ 'breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu]);
     }
+
+    public function change_photo()
+    {
+        
+
+        return view('auth.change_profil');
+    }
+
+    public function change_profil(Request $request)
+    {
+
+        $request->validate([
+            'profile_image' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:2048']
+        ]);
+        
+    
+        $user = Auth::user();
+    
+        // Hapus foto lama kalau ada
+        if ($user->profile_image && Storage::disk('public')->exists($user->profile_image)) {
+            Storage::disk('public')->delete($user->profile_image);
+        }
+        
+    
+        // Simpan foto baru
+        $path = $request->file('profile_image')->store('profile_images', 'public');
+    
+        // Update kolom di database
+        $user->profile_image = $path;
+
+        /** @var \app\Models\UserModel $user */
+        $user->save();
+    
+        return response()->json([
+            'status' => true,
+            'message' => 'Foto profil berhasil diupdate',
+            'image_url' => asset('storage/' . $path)
+        ]);
+    }
+
+
 }
