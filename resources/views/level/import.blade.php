@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <label>Pilih File</label>
                     <input type="file" name="file_level" id="file_level" class="form-control" required>
-                    <small id="error-file_level" class="error-text form-text textdanger"></small>
+                    <small id="error-file_level" class="error-text form-text text-danger"></small>
                 </div>
             </div>
             <div class="modal-footer">

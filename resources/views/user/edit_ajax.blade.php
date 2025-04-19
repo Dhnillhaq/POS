@@ -35,7 +35,7 @@
                                     {{ $l->level_nama }}</option>
                             @endforeach
                         </select>
-                        <small id="error-level_id" class="error-text form-text textdanger"></small>
+                        <small id="error-level_id" class="error-text form-text text-danger"></small>
                     </div>
                     <div class="form-group">
                         <label>Username</label>
