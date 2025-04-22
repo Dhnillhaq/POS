@@ -51,8 +51,7 @@
     </form>
     <script>
         $(document).ready(function() {
-            $("#form-delete").validate({
-                rules: {},
+            $("#form-delete").validate({                
                 submitHandler: function(form) {
                     $.ajax({
                         url: form.action,
@@ -67,32 +66,18 @@
                                     text: response.message
                                 });
                                 dataLevel.ajax.reload();
-                            } else {
-                                $('.error-text').text('');
-                                $.each(response.msgField, function(prefix, val) {
-                                    $('#error-' + prefix).text(val[0]);
-                                });
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Terjadi Kesalahan',
-                                    text: response.message
-                                });
-                            }
-                        }
+                            } 
+                        },
+                        error: function (xhr, status, error) {
+                             Swal.fire({
+                                 icon: 'error',
+                                 title: 'Terjadi Kesalahan',
+                                 text: error
+                             });
+                         }
                     });
                     return false;
-                },
-                errorElement: 'span',
-                errorPlacement: function(error, element) {
-                    error.addClass('invalid-feedback');
-                    element.closest('.form-group').append(error);
-                },
-                highlight: function(element, errorClass, validClass) {
-                    $(element).addClass('is-invalid');
-                },
-                unhighlight: function(element, errorClass, validClass) {
-                    $(element).removeClass('is-invalid');
-                }
+                }                
             });
         });
     </script>

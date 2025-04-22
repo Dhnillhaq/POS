@@ -47,7 +47,7 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btnwarning">Batal</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-warning">Batal</button>
                     <button type="submit" class="btn btn-primary">Ya, Hapus</button>
                 </div>
             </div>
@@ -70,12 +70,6 @@
                                     text: response.message
                                 });
                                 dataUser.ajax.reload();
-                            } else {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Terjadi Kesalahan',
-                                    text: response.message
-                                });
                             }
                         },
                         error: function (xhr, status, error) {
@@ -84,21 +78,9 @@
                                  title: 'Terjadi Kesalahan',
                                  text: error
                              });
-                             console.error("AJAX Error:", status, error);
                          }
                     });
                     return false;
-                },
-                errorElement: 'span',
-                errorPlacement: function (error, element) {
-                    error.addClass('invalid-feedback');
-                    element.closest('.form-group').append(error);
-                },
-                highlight: function (element, errorClass, validClass) {
-                    $(element).addClass('is-invalid');
-                },
-                unhighlight: function (element, errorClass, validClass) {
-                    $(element).removeClass('is-invalid');
                 }
             });
         });
