@@ -37,7 +37,7 @@ class BarangController extends Controller
             'harga_jual',
             'kategori_id'
         )->with('kategori');
-        $kategori_id = $request->input('kategori_id');
+        $kategori_id = $request->input('filter_kategori');
 
         if (!empty($kategori_id)) {
             $barang->where('kategori_id', $kategori_id);

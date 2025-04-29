@@ -24,7 +24,7 @@
                     <div class="form-group row">
                         <label class="col-1 control-label col-form-label">Filter:</label>
                         <div class="col-3">
-                            <select name="filter_kategori" class="form-control form-control-sm filter_kategori">
+                            <select name="kategori_id" id="kategori_id" class="form-control form-control-sm">
                                 <option value="">- Semua -</option>
                                 @foreach($kategori as $k)
                                     <option value="{{ $k->kategori_id }}">{{ $k->kategori_nama }}</option>
@@ -75,7 +75,7 @@
                     "dataType": "json",
                     "type": "POST",
                     "data": function (d) {
-                        d.kategori_id = $('.filter_kategori').val();
+                        d.kategori_id = $('#kategori_id').val();
                     }
                 },
                 columns: [
@@ -118,7 +118,7 @@
                 ]
             });
 
-            $('.filter_kategori').change(function () {
+            $('#kategori_id').change(function () {
                 dataStok.draw(); // yang benar sesuai variabel DataTable kamu
             });
 
