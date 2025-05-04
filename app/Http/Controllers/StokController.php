@@ -44,7 +44,7 @@ class StokController extends Controller
                 'supplier',
                 'user.level'
             ]);
-        $kategori_id = $request->input('filter_kategori');
+        $kategori_id = $request->input('kategori_id');
         \Illuminate\Support\Facades\Log::info('Kategori ID:', ['id' => $kategori_id]);
 
         if (!empty($kategori_id)) {
