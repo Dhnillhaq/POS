@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class UserModel extends Authenticatable implements JWTSubject
 {
 
+    use HasFactory;
 
     public function getJWTIdentifier()
     {
@@ -40,10 +41,10 @@ class UserModel extends Authenticatable implements JWTSubject
     protected $hidden = ['password']; // jangan ditampilkan saat select
     protected $casts = ['password' => 'hashed']; // casting password agar otomatis di hash
 
-    public function getAuthIdentifierName()
-    {
-        return 'username'; // default 'email', tapi kamu pakai username
-    }
+    // public function getAuthIdentifierName()
+    // {
+    //     return 'username'; // default 'email', tapi kamu pakai username
+    // }
 
     public function level(): BelongsTo
     {
